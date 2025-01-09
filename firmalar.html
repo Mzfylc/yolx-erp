@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,19 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Firmalar</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function togglePopup() {
+            const popup = document.getElementById('popup');
+            popup.classList.toggle('hidden');
+        }
+
+        function addCompany() {
+            const companyName = document.getElementById('companyName').value;
+            const contactPerson = document.getElementById('contactPerson').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+
+            const tableBody = document.querySelector('tbody');
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td class="border border-gray-300 px-4 py-2">${companyName}</td>
+                <td class="border border-gray-300 px-4 py-2">${contactPerson}</td>
+                <td class="border border-gray-300 px-4 py-2">${phone}</td>
+                <td class="border border-gray-300 px-4 py-2">${email}</td>
+                <td class="border border-gray-300 px-4 py-2">${address}</td>
+            `;
+            tableBody.appendChild(row);
+
+            togglePopup();
+        }
+    </script>
 </head>
 <body class="bg-gray-100 flex flex-col h-screen">
-    <!-- Header -->
     <header class="bg-blue-500 text-white py-4 px-6">
         <div class="flex justify-between items-center">
             <h1 class="text-2xl font-bold">YOLX Mobile ERP - Firmalar</h1>
+            <button onclick="togglePopup()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">+ Firma Ekle</button>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="flex-1 p-6 bg-white overflow-y-auto">
         <h2 class="text-xl font-bold mb-4">Firma Listesi</h2>
-        
         <table class="table-auto w-full border-collapse border border-gray-300">
             <thead>
                 <tr class="bg-gray-200">
@@ -36,27 +62,25 @@
                     <td class="border border-gray-300 px-4 py-2">info@abcltd.com</td>
                     <td class="border border-gray-300 px-4 py-2">İstanbul, Türkiye</td>
                 </tr>
-                <tr class="bg-gray-100">
-                    <td class="border border-gray-300 px-4 py-2">XYZ A.Ş.</td>
-                    <td class="border border-gray-300 px-4 py-2">Mehmet Demir</td>
-                    <td class="border border-gray-300 px-4 py-2">+90 312 765 4321</td>
-                    <td class="border border-gray-300 px-4 py-2">contact@xyz.com</td>
-                    <td class="border border-gray-300 px-4 py-2">Ankara, Türkiye</td>
-                </tr>
-                <tr>
-                    <td class="border border-gray-300 px-4 py-2">DEF Ticaret</td>
-                    <td class="border border-gray-300 px-4 py-2">Ayşe Kaya</td>
-                    <td class="border border-gray-300 px-4 py-2">+90 216 987 6543</td>
-                    <td class="border border-gray-300 px-4 py-2">support@def.com</td>
-                    <td class="border border-gray-300 px-4 py-2">İzmir, Türkiye</td>
-                </tr>
             </tbody>
         </table>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-200 text-gray-600 py-4 text-center">
-        © 2025 YOLX Mobile ERP Projesi. Tüm Hakları Saklıdır.
-    </footer>
+    <div id="popup" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white p-6 rounded shadow-lg w-96">
+            <h2 class="text-xl font-bold mb-4">Yeni Firma Ekle</h2>
+            <div class="space-y-4">
+                <input id="companyName" type="text" placeholder="Firma Adı" class="w-full px-4 py-2 border rounded">
+                <input id="contactPerson" type="text" placeholder="Yetkili Kişi" class="w-full px-4 py-2 border rounded">
+                <input id="phone" type="text" placeholder="Telefon" class="w-full px-4 py-2 border rounded">
+                <input id="email" type="email" placeholder="Email" class="w-full px-4 py-2 border rounded">
+                <input id="address" type="text" placeholder="Adres" class="w-full px-4 py-2 border rounded">
+            </div>
+            <div class="mt-4 flex justify-end space-x-2">
+                <button onclick="togglePopup()" class="bg-red-500 text-white px-4 py-2 rounded">İptal</button>
+                <button onclick="addCompany()" class="bg-blue-500 text-white px-4 py-2 rounded">Kaydet</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
