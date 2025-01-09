@@ -7,17 +7,54 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 flex flex-col h-screen">
+    <!-- Header -->
     <header class="bg-blue-500 text-white py-4 px-6">
         <div class="flex justify-between items-center">
-            <h1 class="text-2xl font-bold">YOLX Mobile</h1>
-            <button onclick="goBack()" class="bg-white text-blue-500 px-4 py-2 rounded-lg">Geri Dön</button>
+            <h1 class="text-2xl font-bold">YOLX Mobile ERP - Firmalar</h1>
         </div>
     </header>
+
+    <!-- Main Content -->
     <main class="flex-1 p-6 bg-white overflow-y-auto">
-        <h2 class="text-xl font-bold mb-4">Firmalar</h2>
-        <p class="text-gray-600">Burada kayıtlı tüm firmaların listesini görüntüleyebilirsiniz.</p>
-        <div id="companyList" class="grid grid-cols-2 gap-4 mt-6"></div>
+        <h2 class="text-xl font-bold mb-4">Firma Listesi</h2>
+        
+        <table class="table-auto w-full border-collapse border border-gray-300">
+            <thead>
+                <tr class="bg-gray-200">
+                    <th class="border border-gray-300 px-4 py-2 text-left">Firma Adı</th>
+                    <th class="border border-gray-300 px-4 py-2 text-left">Yetkili Kişi</th>
+                    <th class="border border-gray-300 px-4 py-2 text-left">Telefon</th>
+                    <th class="border border-gray-300 px-4 py-2 text-left">Email</th>
+                    <th class="border border-gray-300 px-4 py-2 text-left">Adres</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2">ABC Ltd. Şti.</td>
+                    <td class="border border-gray-300 px-4 py-2">Ali Yılmaz</td>
+                    <td class="border border-gray-300 px-4 py-2">+90 212 123 4567</td>
+                    <td class="border border-gray-300 px-4 py-2">info@abcltd.com</td>
+                    <td class="border border-gray-300 px-4 py-2">İstanbul, Türkiye</td>
+                </tr>
+                <tr class="bg-gray-100">
+                    <td class="border border-gray-300 px-4 py-2">XYZ A.Ş.</td>
+                    <td class="border border-gray-300 px-4 py-2">Mehmet Demir</td>
+                    <td class="border border-gray-300 px-4 py-2">+90 312 765 4321</td>
+                    <td class="border border-gray-300 px-4 py-2">contact@xyz.com</td>
+                    <td class="border border-gray-300 px-4 py-2">Ankara, Türkiye</td>
+                </tr>
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2">DEF Ticaret</td>
+                    <td class="border border-gray-300 px-4 py-2">Ayşe Kaya</td>
+                    <td class="border border-gray-300 px-4 py-2">+90 216 987 6543</td>
+                    <td class="border border-gray-300 px-4 py-2">support@def.com</td>
+                    <td class="border border-gray-300 px-4 py-2">İzmir, Türkiye</td>
+                </tr>
+            </tbody>
+        </table>
     </main>
+
+    <!-- Footer -->
     <footer class="bg-gray-200 text-gray-600 py-4 text-center">
         © 2025 YOLX Mobile ERP Projesi. Tüm Hakları Saklıdır.
     </footer>
