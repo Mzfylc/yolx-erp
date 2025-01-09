@@ -7,14 +7,18 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 flex flex-col h-screen">
+    <!-- Header -->
     <header class="bg-blue-500 text-white py-4 px-6">
         <div class="flex justify-between items-center">
             <h1 class="text-2xl font-bold">YOLX Mobile ERP</h1>
         </div>
     </header>
+
+    <!-- Main Content -->
     <main class="flex-1 p-6 bg-white overflow-y-auto">
         <h2 class="text-xl font-bold mb-4">Ana Sayfa</h2>
         <p class="text-gray-600">ERP sistemindeki modüllere aşağıdaki bağlantılardan ulaşabilirsiniz:</p>
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
             <a href="teklifler.html" class="block p-4 bg-yellow-100 rounded-lg shadow hover:bg-yellow-200">
                 <h3 class="font-bold text-lg">Teklifler</h3>
@@ -28,8 +32,14 @@
                 <h3 class="font-bold text-lg">Firmalar</h3>
                 <p class="text-gray-700">ERP sistemi firma yönetimi modülü.</p>
             </a>
+            <a href="cihaz_talepleri.html" class="block p-4 bg-blue-100 rounded-lg shadow hover:bg-blue-200">
+                <h3 class="font-bold text-lg">Cihaz Talepleri</h3>
+                <p class="text-gray-700">ERP sistemi cihaz talepleri modülü.</p>
+            </a>
         </div>
     </main>
+
+    <!-- Footer -->
     <footer class="bg-gray-200 text-gray-600 py-4 text-center">
         © 2025 YOLX Mobile ERP Projesi. Tüm Hakları Saklıdır.
     </footer>
