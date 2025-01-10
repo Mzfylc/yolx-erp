@@ -1,59 +1,17 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Firma Bilgileri</title>
+    <title>Firmalar</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        const formData = {
-            firmaBilgileri: {},
-            islemYetkilisi: {},
-            firmaPersonelleri: [],
-            aracBilgileri: [],
-            dokumanKayit: {},
-            satisHareketleri: {},
-            sozlesmeYenileme: {},
-            montajYeriRandevu: {},
-        };
-
-        function switchTab(tabId) {
-            const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => tab.classList.add('hidden'));
-            document.getElementById(tabId).classList.remove('hidden');
-        }
-    </script>
 </head>
 <body class="bg-gray-100 flex flex-col h-screen">
     <header class="bg-blue-500 text-white py-4 px-6">
         <div class="flex justify-between items-center">
             <h1 class="text-2xl font-bold">YOLX Mobile ERP - Firmalar</h1>
-            <a href="/firma_bilgileri.html" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">+ Firma Ekle</a>
+            <a href="firmalar_page.html" class="bg-green-500 text-white px-4 py-2 rounded">+ Firma Ekle</a>
         </div>
     </header>
-    <main class="p-6 flex-1 overflow-y-auto">
-        <h2 class="text-xl font-bold mb-4">Firmalar</h2>
-        <table class="table-auto w-full border-collapse border border-gray-300">
-            <thead>
-                <tr class="bg-gray-200">
-                    <th class="border border-gray-300 px-4 py-2 text-left">Firma Adı</th>
-                    <th class="border border-gray-300 px-4 py-2 text-left">Yetkili Kişi</th>
-                    <th class="border border-gray-300 px-4 py-2 text-left">Telefon</th>
-                    <th class="border border-gray-300 px-4 py-2 text-left">Email</th>
-                    <th class="border border-gray-300 px-4 py-2 text-left">Adres</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="border border-gray-300 px-4 py-2">ABC Ltd. Şti.</td>
-                    <td class="border border-gray-300 px-4 py-2">Ali Yılmaz</td>
-                    <td class="border border-gray-300 px-4 py-2">+90 212 123 4567</td>
-                    <td class="border border-gray-300 px-4 py-2">info@abcltd.com</td>
-                    <td class="border border-gray-300 px-4 py-2">İstanbul, Türkiye</td>
-                </tr>
-            </tbody>
-        </table>
-    </main>
 </body>
 </html>
