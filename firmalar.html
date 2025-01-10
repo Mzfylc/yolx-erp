@@ -5,13 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Firmalar</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function loadFirmalar() {
+            const firmalar = JSON.parse(localStorage.getItem('firmalar')) || [];
+            const tableBody = document.getElementById('firmaTableBody');
+            tableBody.innerHTML = '';
+
+            firmalar.forEach((firma, index) => {
+                const row = `
+                    <tr>
+                        <td class="border px-4 py-2">${index + 1}</td>
+                        <td class="border px-4 py-2">${firma.firmaAdi}</td>
+                        <td class="border px-4 py-2">${firma.tcVergiNo}</td>
+                        <td class="border px-4 py-2">${firma.cepTelefonu}</td>
+                        <td class="border px-4 py-2">${firma.mailAdresi}</td>
+                        <td class="border px-4 py-2">${firma.sehir}</td>
+                        <td class="border px-4 py-2">${firma.vergiDairesi}</td>
+                        <td class="border px-4 py-2">${firma.firmaYetkilisi}</td>
+                        <td class="border px-4 py-2">${firma.sozlesmeNo}</td>
+                    </tr>
+                `;
+                tableBody.innerHTML += row;
+            });
+        }
+    </script>
 </head>
-<body class="bg-gray-100 flex flex-col h-screen">
+<body onload="loadFirmalar()" class="bg-gray-100 flex flex-col h-screen">
     <header class="bg-blue-500 text-white py-4 px-6">
         <div class="flex justify-between items-center">
             <h1 class="text-2xl font-bold">YOLX Mobile ERP - Firmalar</h1>
             <a href="firmalar_page.html" class="bg-green-500 text-white px-4 py-2 rounded">+ Firma Ekle</a>
         </div>
     </header>
+    <main class="p-6 flex-1 overflow-y-auto">
+        <h2 class="text-xl font-bold mb-4">Kayıtlı Firmalar</h2>
+        <table class="table-auto w-full">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2">#</th>
+                    <th class="px-4 py-2">Firma Adı</th>
+                    <th class="px-4 py-2">TC/Vergi No</th>
+                    <th class="px-4 py-2">Cep Telefonu</th>
+                    <th class="px-4 py-2">Mail Adresi</th>
+                    <th class="px-4 py-2">Şehir</th>
+                    <th class="px-4 py-2">Vergi Dairesi</th>
+                    <th class="px-4 py-2">Firma Yetkilisi</th>
+                    <th class="px-4 py-2">Sözleşme Numarası</th>
+                </tr>
+            </thead>
+            <tbody id="firmaTableBody">
+                <!-- Firmalar burada listelenecek -->
+            </tbody>
+        </table>
+    </main>
 </body>
 </html>
