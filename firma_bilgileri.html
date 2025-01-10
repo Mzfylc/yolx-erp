@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firma Bilgileri</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        const formData = {
+            firmaBilgileri: {},
+            islemYetkilisi: {},
+            firmaPersonelleri: [],
+            aracBilgileri: [],
+            dokumanKayit: {},
+            satisHareketleri: {},
+            sozlesmeYenileme: {},
+            montajYeriRandevu: {},
+        };
+
+        function switchTab(tabId) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.add('hidden'));
+            document.getElementById(tabId).classList.remove('hidden');
+        }
+    </script>
+</head>
+<body class="bg-gray-100 flex flex-col h-screen">
+    <header class="bg-blue-500 text-white py-4 px-6">
+        <h1 class="text-2xl font-bold">Firma Bilgileri</h1>
+    </header>
+
+    <nav class="bg-gray-200 p-4">
+        <ul class="flex space-x-4">
+            <li><button onclick="switchTab('firmaBilgileri')" class="py-2 px-4 bg-blue-500 text-white rounded">Firma Bilgileri</button></li>
+            <li><button onclick="switchTab('islemYetkilisi')" class="py-2 px-4 bg-blue-500 text-white rounded">İşlem Yetkilisi</button></li>
+            <li><button onclick="switchTab('firmaPersonelleri')" class="py-2 px-4 bg-blue-500 text-white rounded">Firma Personelleri</button></li>
+            <li><button onclick="switchTab('aracBilgileri')" class="py-2 px-4 bg-blue-500 text-white rounded">Araç Bilgileri</button></li>
+            <li><button onclick="switchTab('dokumanKayit')" class="py-2 px-4 bg-blue-500 text-white rounded">Döküman Kayıt</button></li>
+            <li><button onclick="switchTab('satisHareketleri')" class="py-2 px-4 bg-blue-500 text-white rounded">Satış Hareketleri</button></li>
+            <li><button onclick="switchTab('sozlesmeYenileme')" class="py-2 px-4 bg-blue-500 text-white rounded">Sözleşme Yenileme</button></li>
+            <li><button onclick="switchTab('montajYeriRandevu')" class="py-2 px-4 bg-blue-500 text-white rounded">Montaj Yeri Randevu</button></li>
+        </ul>
+    </nav>
+
+    <main class="p-6 flex-1 overflow-y-auto">
+        <div id="firmaBilgileri" class="tab-content">
+            <h2 class="text-xl font-bold mb-4">Firma Bilgileri</h2>
+            <form>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Firma Adı:</label>
+                    <input type="text" id="firmaAdi" class="w-full px-4 py-2 border rounded" placeholder="Firma Adı">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Adres:</label>
+                    <input type="text" id="adres" class="w-full px-4 py-2 border rounded" placeholder="Adres">
+                </div>
+                <button type="button" class="bg-green-500 text-white px-4 py-2 rounded" onclick="switchTab('islemYetkilisi')">Sonraki Adım</button>
+            </form>
+        </div>
+
+        <div id="islemYetkilisi" class="tab-content hidden">
+            <h2 class="text-xl font-bold mb-4">İşlem Yetkilisi</h2>
+            <form>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Yetkili Adı:</label>
+                    <input type="text" id="yetkiliAdi" class="w-full px-4 py-2 border rounded" placeholder="Yetkili Adı">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Telefon:</label>
+                    <input type="text" id="telefon" class="w-full px-4 py-2 border rounded" placeholder="Telefon">
+                </div>
+                <button type="button" class="bg-green-500 text-white px-4 py-2 rounded" onclick="switchTab('firmaPersonelleri')">Sonraki Adım</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
