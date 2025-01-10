@@ -7,48 +7,64 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         let firmaData = {};
+        let currentTab = 0;
 
-        function saveFirmaBilgileri() {
-            firmaData = {
-                firmaAdi: document.getElementById('firmaAdi').value,
-                tcVergiNo: document.getElementById('tcVergiNo').value,
-                cepTelefonu: document.getElementById('cepTelefonu').value,
-                mailAdresi: document.getElementById('mailAdresi').value,
-                internetAdresi: document.getElementById('internetAdresi').value,
-                sehir: document.getElementById('sehir').value,
-                vergiDairesi: document.getElementById('vergiDairesi').value,
-                firmaYetkilisi: document.getElementById('firmaYetkilisi').value,
-                firmaTipi: document.getElementById('firmaTipi').value,
-                adres: document.getElementById('adres').value,
-                sozlesmeNo: document.getElementById('sozlesmeNo').value,
-            };
-            alert('Firma bilgileri kaydedildi!');
+        function showTab(tabIndex) {
+            const tabs = document.querySelectorAll(".tab-content");
+            tabs.forEach((tab, index) => {
+                tab.style.display = index === tabIndex ? "block" : "none";
+            });
+            currentTab = tabIndex;
+        }
+
+        function saveAndNext() {
+            const activeForm = document.querySelector(".tab-content:not([style*='display: none']) form");
+            const formData = new FormData(activeForm);
+            formData.forEach((value, key) => {
+                firmaData[key] = value;
+            });
+
+            if (currentTab < document.querySelectorAll(".tab-content").length - 1) {
+                showTab(currentTab + 1);
+            } else {
+                saveToLocalStorage();
+                alert("Tüm bilgiler kaydedildi!");
+                window.location.href = "firmalar.html";
+            }
         }
 
         function saveToLocalStorage() {
             let firmalar = JSON.parse(localStorage.getItem('firmalar')) || [];
             firmalar.push(firmaData);
             localStorage.setItem('firmalar', JSON.stringify(firmalar));
-            alert('Firma başarıyla kaydedildi!');
-            window.location.href = "firmalar.html";
         }
+
+        document.addEventListener("DOMContentLoaded", () => showTab(0));
     </script>
 </head>
 <body class="bg-gray-100 flex flex-col h-screen">
     <header class="bg-blue-500 text-white py-4 px-6">
-        <h1 class="text-2xl font-bold">YOLX Mobile ERP - Firma Ekle</h1>
+        <h1 class="text-2xl font-bold">Firma Ekle</h1>
     </header>
     <main class="p-6 flex-1 overflow-y-auto">
-        <h2 class="text-xl font-bold mb-4">Firma Bilgileri</h2>
-        <form onsubmit="saveFirmaBilgileri(); return false;">
-            <div class="mb-4">
-                <label class="block text-gray-700">Firma Adı:</label>
-                <input type="text" id="firmaAdi" class="w-full px-4 py-2 border rounded" required>
+        <div>
+            <button onclick="showTab(0)" class="px-4 py-2 bg-blue-500 text-white rounded">Firma Bilgileri</button>
+            <button onclick="showTab(1)" class="px-4 py-2 bg-blue-500 text-white rounded">Firma Personelleri</button>
+            <!-- Diğer Sekmeler İçin Butonlar -->
+        </div>
+
+        <div id="tabContents">
+            <div class="tab-content">
+                <h2 class="text-xl font-bold mb-4">Firma Bilgileri</h2>
+                <form>
+                    <div class="mb-4">
+                        <label>Firma Adı:</label>
+                        <input type="text" name="firmaAdi" class="w-full px-4 py-2 border rounded">
+                    </div>
+                </form>
+                <button onclick="saveAndNext()" class="px-4 py-2 bg-green-500 text-white rounded">Kaydet ve İlerle</button>
             </div>
-            <!-- Diğer form alanları buraya eklenecek -->
-            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Kaydet</button>
-            <button type="button" onclick="saveToLocalStorage()" class="bg-blue-500 text-white px-4 py-2 rounded">Kaydet ve Çık</button>
-        </form>
+        </div>
     </main>
 </body>
 </html>
