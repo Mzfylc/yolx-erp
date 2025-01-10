@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Firma Bilgileri</title>
+    <title>Firma Ekle</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         let firmaData = {};
@@ -22,7 +22,7 @@
                 adres: document.getElementById('adres').value,
                 sozlesmeNo: document.getElementById('sozlesmeNo').value,
             };
-            alert('Firma bilgileri kaydedildi! Diğer adımlara geçebilirsiniz.');
+            alert('Firma bilgileri kaydedildi!');
         }
 
         function saveToLocalStorage() {
@@ -39,29 +39,16 @@
         <h1 class="text-2xl font-bold">YOLX Mobile ERP - Firma Ekle</h1>
     </header>
     <main class="p-6 flex-1 overflow-y-auto">
-        <div>
-            <h2 class="text-xl font-bold mb-4">Firma Bilgileri</h2>
-            <form onsubmit="saveFirmaBilgileri(); return false;">
-                <div class="mb-4">
-                    <label class="block text-gray-700">Firma Adı:</label>
-                    <input type="text" id="firmaAdi" class="w-full px-4 py-2 border rounded" required>
-                </div>
-                <div class="mb-4">
-                    <label class="block text-gray-700">TC No - Vergi No:</label>
-                    <input type="text" id="tcVergiNo" class="w-full px-4 py-2 border rounded" required>
-                </div>
-                <div class="mb-4">
-                    <label class="block text-gray-700">Cep Telefonu:</label>
-                    <input type="tel" id="cepTelefonu" class="w-full px-4 py-2 border rounded" required>
-                </div>
-                <div class="mb-4">
-                    <label class="block text-gray-700">Mail Adresi:</label>
-                    <input type="email" id="mailAdresi" class="w-full px-4 py-2 border rounded" required>
-                </div>
-                <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Kaydet</button>
-                <button type="button" onclick="saveToLocalStorage()" class="bg-blue-500 text-white px-4 py-2 rounded">Kaydet ve Çık</button>
-            </form>
-        </div>
+        <h2 class="text-xl font-bold mb-4">Firma Bilgileri</h2>
+        <form onsubmit="saveFirmaBilgileri(); return false;">
+            <div class="mb-4">
+                <label class="block text-gray-700">Firma Adı:</label>
+                <input type="text" id="firmaAdi" class="w-full px-4 py-2 border rounded" required>
+            </div>
+            <!-- Diğer form alanları buraya eklenecek -->
+            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Kaydet</button>
+            <button type="button" onclick="saveToLocalStorage()" class="bg-blue-500 text-white px-4 py-2 rounded">Kaydet ve Çık</button>
+        </form>
     </main>
 </body>
 </html>
