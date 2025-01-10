@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firma Bilgileri</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function validateForm() {
+            const tcVergiNo = document.getElementById('tcVergiNo').value;
+            if (tcVergiNo.length !== 10 && tcVergiNo.length !== 11) {
+                alert('TC Kimlik - Vergi No 10 veya 11 haneli olmalıdır!');
+                return false;
+            }
+            return true;
+        }
+
+        function switchTab(tabId) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.add('hidden'));
+            document.getElementById(tabId).classList.remove('hidden');
+        }
+    </script>
+</head>
+<body class="bg-gray-100 flex flex-col h-screen">
+    <header class="bg-blue-500 text-white py-4 px-6">
+        <h1 class="text-2xl font-bold">YOLX Mobile ERP - Firma Bilgileri</h1>
+    </header>
+
+    <nav class="bg-gray-200 p-4">
+        <ul class="flex space-x-4">
+            <li><button onclick="switchTab('firmaBilgileri')" class="py-2 px-4 bg-blue-500 text-white rounded">Firma Bilgileri</button></li>
+            <li><button onclick="switchTab('islemYetkilisi')" class="py-2 px-4 bg-blue-500 text-white rounded">İşlem Yetkilisi</button></li>
+            <li><button onclick="switchTab('firmaPersonelleri')" class="py-2 px-4 bg-blue-500 text-white rounded">Firma Personelleri</button></li>
+            <li><button onclick="switchTab('aracBilgileri')" class="py-2 px-4 bg-blue-500 text-white rounded">Araç Bilgileri</button></li>
+            <li><button onclick="switchTab('dokumanKayit')" class="py-2 px-4 bg-blue-500 text-white rounded">Döküman Kayıt</button></li>
+            <li><button onclick="switchTab('satisHareketleri')" class="py-2 px-4 bg-blue-500 text-white rounded">Satış Hareketleri</button></li>
+            <li><button onclick="switchTab('sozlesmeYenileme')" class="py-2 px-4 bg-blue-500 text-white rounded">Sözleşme Yenileme</button></li>
+            <li><button onclick="switchTab('montajYeriRandevu')" class="py-2 px-4 bg-blue-500 text-white rounded">Montaj Yeri Randevu</button></li>
+        </ul>
+    </nav>
+
+    <main class="p-6 flex-1 overflow-y-auto">
+        <div id="firmaBilgileri" class="tab-content">
+            <h2 class="text-xl font-bold mb-4">Firma Bilgileri</h2>
+            <form onsubmit="return validateForm()">
+                <!-- Form Alanları -->
+            </form>
+        </div>
+    </main>
+</body>
+</html>
