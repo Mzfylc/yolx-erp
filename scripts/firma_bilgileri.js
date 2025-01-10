@@ -1,1 +1,0 @@
-console.log('Firma bilgileri JS çalışıyor.');
