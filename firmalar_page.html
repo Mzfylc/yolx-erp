@@ -1,5 +1,147 @@
 
 <!DOCTYPE html>
 <html lang="en">
-...
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firma Bilgileri</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function validateForm() {
+            const tcVergiNo = document.getElementById('tcVergiNo').value;
+            if (tcVergiNo.length !== 10 && tcVergiNo.length !== 11) {
+                alert('TC Kimlik - Vergi No 10 veya 11 haneli olmalıdır!');
+                return false;
+            }
+            return true;
+        }
+
+        function switchTab(tabId) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.add('hidden'));
+            document.getElementById(tabId).classList.remove('hidden');
+        }
+    </script>
+</head>
+<body class="bg-gray-100 flex flex-col h-screen">
+    <header class="bg-blue-500 text-white py-4 px-6">
+        <div class="flex justify-between items-center">
+            <h1 class="text-2xl font-bold">YOLX Mobile ERP - Firmalar</h1>
+            <a href="firmalar_page.html" class="bg-green-500 text-white px-4 py-2 rounded">+ Firma Ekle</a>
+        </div>
+    </header>
+
+    <nav class="bg-gray-200 p-4">
+        <ul class="flex space-x-4">
+            <li><button onclick="switchTab('firmaBilgileri')" class="py-2 px-4 bg-blue-500 text-white rounded">Firma Bilgileri</button></li>
+            <li><button onclick="switchTab('islemYetkilisi')" class="py-2 px-4 bg-blue-500 text-white rounded">İşlem Yetkilisi</button></li>
+            <li><button onclick="switchTab('firmaPersonelleri')" class="py-2 px-4 bg-blue-500 text-white rounded">Firma Personelleri</button></li>
+            <li><button onclick="switchTab('aracBilgileri')" class="py-2 px-4 bg-blue-500 text-white rounded">Araç Bilgileri</button></li>
+            <li><button onclick="switchTab('dokumanKayit')" class="py-2 px-4 bg-blue-500 text-white rounded">Döküman Kayıt</button></li>
+            <li><button onclick="switchTab('satisHareketleri')" class="py-2 px-4 bg-blue-500 text-white rounded">Satış Hareketleri</button></li>
+            <li><button onclick="switchTab('sozlesmeYenileme')" class="py-2 px-4 bg-blue-500 text-white rounded">Sözleşme Yenileme</button></li>
+            <li><button onclick="switchTab('montajYeriRandevu')" class="py-2 px-4 bg-blue-500 text-white rounded">Montaj Yeri Randevu</button></li>
+        </ul>
+    </nav>
+
+    <main class="p-6 flex-1 overflow-y-auto">
+        <div id="firmaBilgileri" class="tab-content">
+            <h2 class="text-xl font-bold mb-4">Firma Bilgileri</h2>
+            <form onsubmit="return validateForm()">
+                <div class="mb-4">
+                    <label class="block text-gray-700">Firma Adı:</label>
+                    <input type="text" id="firmaAdi" class="w-full px-4 py-2 border rounded" placeholder="Firma Adı" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">TC Kimlik - Vergi No:</label>
+                    <input type="text" id="tcVergiNo" class="w-full px-4 py-2 border rounded" placeholder="10 veya 11 haneli numara" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Telefon No:</label>
+                    <input type="tel" id="telefonNo" class="w-full px-4 py-2 border rounded" placeholder="Telefon Numarası" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">GSM:</label>
+                    <input type="tel" id="gsm" class="w-full px-4 py-2 border rounded" placeholder="GSM" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Cep Telefonu:</label>
+                    <input type="tel" id="cepTelefonu" class="w-full px-4 py-2 border rounded" placeholder="Cep Telefonu" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Mail Adresi:</label>
+                    <input type="email" id="mailAdresi" class="w-full px-4 py-2 border rounded" placeholder="Mail Adresi" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">İnternet Adresi:</label>
+                    <input type="url" id="internetAdresi" class="w-full px-4 py-2 border rounded" placeholder="İnternet Adresi">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Şehir:</label>
+                    <input type="text" id="sehir" class="w-full px-4 py-2 border rounded" placeholder="Şehir">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Vergi Dairesi:</label>
+                    <input type="text" id="vergiDairesi" class="w-full px-4 py-2 border rounded" placeholder="Vergi Dairesi">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Firma Yetkilisi:</label>
+                    <input type="text" id="firmaYetkilisi" class="w-full px-4 py-2 border rounded" placeholder="Firma Yetkilisi">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Yetkili Personel:</label>
+                    <input type="text" id="yetkiliPersonel" class="w-full px-4 py-2 border rounded" placeholder="Yetkili Personel">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Firma Tipi:</label>
+                    <select id="firmaTipi" class="w-full px-4 py-2 border rounded" required>
+                        <option value="">Seçiniz</option>
+                        <option value="sahis">Şahıs</option>
+                        <option value="limited">Limited</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Sözleşme Numarası:</label>
+                    <input type="text" id="sozlesmeNo" class="w-full px-4 py-2 border rounded" placeholder="Sözleşme Numarası">
+                </div>
+                <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Kaydet ve İlerle</button>
+            </form>
+        </div>
+
+        <div id="islemYetkilisi" class="tab-content hidden">
+            <h2 class="text-xl font-bold mb-4">İşlem Yetkilisi</h2>
+            <p>Bu sekme altında işlem yetkilisi bilgilerini doldurun.</p>
+        </div>
+
+        <div id="firmaPersonelleri" class="tab-content hidden">
+            <h2 class="text-xl font-bold mb-4">Firma Personelleri</h2>
+            <p>Bu sekme altında firma personelleri bilgilerini doldurun.</p>
+        </div>
+
+        <div id="aracBilgileri" class="tab-content hidden">
+            <h2 class="text-xl font-bold mb-4">Araç Bilgileri</h2>
+            <p>Bu sekme altında araç bilgilerini doldurun.</p>
+        </div>
+
+        <div id="dokumanKayit" class="tab-content hidden">
+            <h2 class="text-xl font-bold mb-4">Döküman Kayıt</h2>
+            <p>Bu sekme altında döküman kayıt bilgilerini doldurun.</p>
+        </div>
+
+        <div id="satisHareketleri" class="tab-content hidden">
+            <h2 class="text-xl font-bold mb-4">Satış Hareketleri</h2>
+            <p>Bu sekme altında satış hareketlerini doldurun.</p>
+        </div>
+
+        <div id="sozlesmeYenileme" class="tab-content hidden">
+            <h2 class="text-xl font-bold mb-4">Sözleşme Yenileme</h2>
+            <p>Bu sekme altında sözleşme yenileme bilgilerini doldurun.</p>
+        </div>
+
+        <div id="montajYeriRandevu" class="tab-content hidden">
+            <h2 class="text-xl font-bold mb-4">Montaj Yeri Randevu</h2>
+            <p>Bu sekme altında montaj yeri randevu bilgilerini doldurun.</p>
+        </div>
+    </main>
+</body>
 </html>
